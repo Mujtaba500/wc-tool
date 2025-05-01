@@ -1,6 +1,8 @@
 import yargsInit from "./src/commands.js";
-import { readandLogFileSize } from "./src/common.js";
+import { readandLogFileSize, readFile } from "./src/common.js";
 
-const cli = yargsInit();
+const file = yargsInit();
 
-readandLogFileSize(cli.argv.c);
+file.logFileSize && readandLogFileSize(file.fileName);
+
+file.logNoOfLines && readFile(file.fileName);
