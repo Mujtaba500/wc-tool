@@ -57,3 +57,23 @@ export const readAndLogNoOfWords = async (file) => {
     console.error(`Error reading file: ${error.message}`);
   }
 };
+
+export const readAndLogNoOfChars = async (file) => {
+  let noOfchars = 0;
+  const readStream = fs.createReadStream(file, { encoding: "utf8" });
+  try {
+    readStream.on("data", (data) => {
+      for (const char of data) {
+        if (char !== " " && char !== "\n") {
+          noOfchars++;
+        }
+      }
+    });
+
+    readStream.on("close", () => {
+      console.log("No fo characters in file:", noOfchars);
+    });
+  } catch (error) {
+    console.error(`Error reading file: ${error.message}`);
+  }
+};

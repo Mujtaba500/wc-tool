@@ -46,6 +46,11 @@ const yargsInit = () => {
           file.logNoOfWords = true;
           console.log("Running flag -w for words of file", argv.w);
         }
+        if (argv.m) {
+          file.fileName = argv.m;
+          file.logNoOfCharacters = true;
+          console.log("Running flag -m for characters in file", argv.m);
+        }
       },
     ]).argv;
   return file;
