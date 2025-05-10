@@ -30,7 +30,7 @@ const yargsInit = () => {
         if (argv._.length > 0) {
           console.log("Running command:", argv._[0]);
         }
-        console.log(argv);
+        console.log("argv", argv);
         if (argv.c) {
           file.fileName = argv.c;
           file.logFileSize = true;
@@ -40,6 +40,11 @@ const yargsInit = () => {
           file.fileName = argv.l;
           file.logNoOfLines = true;
           console.log("Running flag -l for lines of file", argv.l);
+        }
+        if (argv.w) {
+          file.fileName = argv.w;
+          file.logNoOfWords = true;
+          console.log("Running flag -w for words of file", argv.w);
         }
       },
     ]).argv;
